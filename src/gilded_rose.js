@@ -5,13 +5,32 @@ class Item {
     this.quality = quality;
   }
 
-  // Used for all generic Items (hence excluding "Aged Brie", Sulfuras, Backstage Passes, and all "Conjured" items)
+}
+
+// GENERIC ITEMS (Be they conjured or not)
+// Diminue leur qualité d'1 point avec le temps qui passe et de 2 points dès la date de péremption dépassée
+// Cette dégressivité est 2 fois plus rapide dans le cas des objets "Conjured"
+// Ladite qualité ne peut cependant jamais descendre sous 0
+class GenericItem extends Item {
+
+  constructor(name, sellIn, quality){
+    super(name,sellIn,quality);
+    this.isConjured = (this.name.indexOf("Conjured") !== -1);
+  }
+
+  // Used for all generic (conjured or not) Items (hence excluding "Aged Brie", Sulfuras, Backstage Passes...)
   updateItemQuality() {
-    console.log(`  > Using 'generic Item' quality calculation with '${this.name}'`);
     this.sellIn--;
+    let qualityDecreaseSpeed = 1;
+    if (!this.isConjured) {
+      console.log(`  > Using 'Generic Item' quality calculation with '${this.name}'`);
+    } else {
+      console.log(`  > Using 'Conjured Item' quality calculation (i.e. decreasing 2x faster) with '${this.name}'`);
+      qualityDecreaseSpeed = 2;
+    }
     this.sellIn < 0 
-      ? (this.quality >= 2 ? this.quality -= 2 : this.quality = 0)
-      : (this.quality >= 1 ? this.quality -= 1 : this.quality = 0);
+        ? (this.quality >= 2*qualityDecreaseSpeed ? this.quality -= 2*qualityDecreaseSpeed : this.quality = 0)
+        : (this.quality >= qualityDecreaseSpeed ? this.quality -= qualityDecreaseSpeed : this.quality = 0);
   }
 
 }
@@ -96,9 +115,9 @@ class Shop {
 
 module.exports = {
   Item,
+  GenericItem,
   AgedBrie, 
   Sulfuras, 
   BackstagePasses,
-  ConjuredItem,
   Shop
 }

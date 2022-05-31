@@ -39,3 +39,20 @@ Cependant, nous devons vous prévenir, vous ne devez en aucun cas modifier la cl
 (Vous pouvez ajouter rendre la méthode `updateQuality` statique, ainsi que des propriétés dans la classe `Item` si vous voulez, nous vous couvrirons)
 
 Juste une précision, un produit ne peut jamais voir sa qualité augmenter au-dessus de 50, cependant "Sulfuras" est un objet légendaire et comme tel sa qualité est de 80 et elle ne change jamais.
+
+### :computer: Development Environment
+
+- Ubuntu 20.04 hosted by WSL 2 running on Windows 10 Famille (version 21H1 build 19043.1645)
+- Node v16.15.0
+- Npm v8.8.0
+- Create-React-App v5.0.1
+- CSS v3
+- HTML v5
+- Javascript ES6+ & JSX
+- And a lot of other guests...
+
+### :lock_with_ink_pen: Credits
+
+&copy; 2022 - Jean-Baptiste VIDAL - [:octocat:](https://github.com/GibbZ-78) [<img src="https://www.linkedin.com/favicon.ico">](https://www.linkedin.com/in/jeanbaptistevidal/)
+
+Enjoy, _wanderer_ :wink: !

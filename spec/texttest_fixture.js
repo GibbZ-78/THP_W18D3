@@ -1,10 +1,10 @@
 
-const { Shop, Item, AgedBrie, Sulfuras, BackstagePasses } = require("../src/gilded_rose");
+const { Shop, Item, GenericItem, AgedBrie, Sulfuras, BackstagePasses } = require("../src/gilded_rose");
 
 const items = [
-  new Item("+5 Dexterity Vest", 10, 20),
+  new GenericItem("+5 Dexterity Vest", 10, 20),
   new AgedBrie("Aged Brie", 2, 0),
-  new Item("Elixir of the Mongoose", 5, 7),
+  new GenericItem("Elixir of the Mongoose", 5, 7),
   new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80),
   new Sulfuras("Sulfuras, Hand of Ragnaros", -1, 80),
   new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20),
@@ -12,7 +12,7 @@ const items = [
   new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 5, 49),
 
   // This Conjured item does not work properly yet
-  new Item("Conjured Mana Cake", 3, 6),
+  new GenericItem("Conjured Mana Cake", 3, 6),
 ];
 
 const days = Number(process.argv[2]) || 2;
