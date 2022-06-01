@@ -8,12 +8,13 @@ class Item {
 }
 
 // AGED BRIE
-// Augmente sa qualité avec le temps qui passe mais jamais au-dessus du plafind de 50 points
+// Daily increases its quality by 1 point, never exceeding 50 though
 class AgedBrie extends Item {
 
   constructor(name="Aged Brie", sellIn, quality){
     super(name,sellIn,quality);
-    console.log(`  > Creating a '${this.name}' item`);
+    this.quality < 0 ? this.quality = 0 : (this.quality > 50 ? this.quality = 50 : null);
+    console.log(`  > Creating a '${this.name}' item (${this.sellIn}, ${this.quality})`);
   }
 
   updateItemQuality() {
@@ -25,7 +26,7 @@ class AgedBrie extends Item {
 }
 
 // SULFURAS
-// Objet légendaire. N'a pas de date de péremption (valorisée à 0 par défaut) et ne perd jamais en qualité (à 80 par défaut)
+// As a legendary artefact, it has no "sell in" (valued to 0 by default) and its quality never decreases (valued to 80 by default)
 class Sulfuras extends Item {
 
   constructor(name="Sulfuras, Hand of Ragnaros", sellIn=0, quality=80){
@@ -42,15 +43,16 @@ class Sulfuras extends Item {
 }
 
 // BACKSTAGE PASSES
-// Augmente sa qualité de :
-//   +1 jusqu'au 11ème jour (compris) avant péremption, 
-//   +2 entre 10 et 6 jours (inclus) avant péremption,
-//   +3 entre 5 et 0 jours (inclus) avant péremption.
-// Il perd toute qualité dès la date de vente dépassée
+// Increases its quality by :
+//   +1 point till the 11 day (included) before concert is held, 
+//   +2 points between 10 and 6 days (included) before concert takes place,
+//   +3 points between 5 and 0 days (included) before music band plays.
+// Its quality falls down and stay at 0 (never lower) once the concert date overpassed, though.
 class BackstagePasses extends Item {
 
-  constructor(name="Backstage passes to a TAFKAL80ETC concert", sellIn, quality){
+  constructor(name="Backstage passes for the upcoming TAFKAL80ETC concert", sellIn, quality){
     super(name,sellIn,quality);
+    this.quality < 0 ? this.quality = 0 : this.quality > 50 ? this.quality = 50 : null;
     console.log(`  > Creating a '${this.name}' item`);
   }
 
@@ -74,13 +76,14 @@ class BackstagePasses extends Item {
 }
 
 // GENERIC ITEMS (aka "All other items, be they conjured or not)
-// Diminue leur qualité d'1 point avec le temps qui passe et de 2 points dès la date de péremption dépassée
-// Cette dégressivité est 2 fois plus rapide dans le cas des objets "Conjured"
-// Ladite qualité ne peut cependant jamais descendre sous 0
+// See their quality decrease by 1 point daily - before "sell in" deadline - and by 2 points once the "sell in" overdued
+// The quality decrease rate is twice faster when it comes to "conjured" items
+// Whatever generic item type (conjured or not) is concerned, none can see its quality get lower than 0
 class GenericItem extends Item {
 
   constructor(name, sellIn, quality){
     super(name,sellIn,quality);
+    this.quality < 0 ? this.quality = 0 : this.quality > 50 ? this.quality = 50 : null;
     this.isConjured = (this.name.indexOf("Conjured") !== -1);
     this.isConjured ? console.log(`  > Creating a conjured '${this.name}' item`) : console.log(`  > Creating a '${this.name}' item`);
   }
