@@ -51,10 +51,9 @@ legendary item and as such its Quality is 80 and it never alters.
 - Ubuntu 20.04 hosted by WSL 2 running on Windows 10 Famille (version 21H1 build 19043.1645)
 - Node v16.15.0
 - Npm v8.8.0
-- Create-React-App v5.0.1
-- CSS v3
-- HTML v5
-- Javascript ES6+ & JSX
+- Javascript ES6+
+- Jasmine
+- Babel
 - And a lot of other guests...
 
 ### :lock_with_ink_pen: Credits
