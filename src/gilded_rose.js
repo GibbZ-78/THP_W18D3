@@ -13,6 +13,7 @@ class AgedBrie extends Item {
 
   constructor(name="Aged Brie", sellIn, quality){
     super(name,sellIn,quality);
+    console.log(`  > Creating a '${this.name}' item`);
   }
 
   updateItemQuality() {
@@ -29,6 +30,7 @@ class Sulfuras extends Item {
 
   constructor(name="Sulfuras, Hand of Ragnaros", sellIn=0, quality=80){
     super(name, 0, 80);
+    console.log(`  > Creating a '${this.name}' item`);
   }
 
   updateItemQuality() {
@@ -49,6 +51,7 @@ class BackstagePasses extends Item {
 
   constructor(name="Backstage passes to a TAFKAL80ETC concert", sellIn, quality){
     super(name,sellIn,quality);
+    console.log(`  > Creating a '${this.name}' item`);
   }
 
   updateItemQuality() {
@@ -79,6 +82,7 @@ class GenericItem extends Item {
   constructor(name, sellIn, quality){
     super(name,sellIn,quality);
     this.isConjured = (this.name.indexOf("Conjured") !== -1);
+    this.isConjured ? console.log(`  > Creating a conjured '${this.name}' item`) : console.log(`  > Creating a '${this.name}' item`);
   }
 
   // Used for all generic (conjured or not) items (hence so far excluding "Aged Brie", Sulfuras, and Backstage Passes...)
@@ -109,7 +113,7 @@ class Shop {
       this.items[i].updateItemQuality();
     }
 
-    // return this.items;
+    return this.items;
   }
 }
 
