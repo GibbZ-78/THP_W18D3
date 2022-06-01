@@ -1,5 +1,4 @@
-
-const { Shop, Item, GenericItem, AgedBrie, Sulfuras, BackstagePasses } = require("../src/gilded_rose");
+const { Shop, GenericItem, AgedBrie, Sulfuras, BackstagePasses } = require("../src/gilded_rose");
 
 const items = [
   new GenericItem("+5 Dexterity Vest", 10, 20),
@@ -17,7 +16,7 @@ const items = [
 const days = Number(process.argv[2]) || 2;
 const gildedRose = new Shop(items);
 
-console.log("OMGHAI!");
+console.log("-~={ !! Welcome to the Gilded Rose SCM system !!! }=~-");
 for (let day = 0; day < days; day++) {
   console.log(`\n-------- DAY ${day} --------`);
   console.log("[Inventory quality status]");

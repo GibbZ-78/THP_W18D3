@@ -1,11 +1,30 @@
-var { Shop, Item, GenericItem, AgedBrie, Sulfuras, BackstagePasses } = require('../src/gilded_rose.js');
+const { Shop, GenericItem, AgedBrie, Sulfuras, BackstagePasses } = require('../src/gilded_rose.js');
 
-describe("Gilded Rose", function() {
+describe("Gilded Rose Test Bank", function() {
 
-  it("should foo", function() {
-    const gildedRose = new Shop([ new GenericItem("foo", 0, 0) ]);
-    const items = gildedRose.updateQualityOfAllShopItems();
-    expect(items[0].name).toEqual("fixme");
+  const testItems = [
+    new GenericItem("+5 Dexterity Vest", 10, 20),
+    new AgedBrie("Aged Brie", 2, 0),
+    new GenericItem("Elixir of the Mongoose", 5, 7),
+    new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80),
+    new Sulfuras("Sulfuras, Hand of Ragnaros", -1, 80),
+    new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+    new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+    new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+    new GenericItem("Conjured Mana Cake", 3, 6),
+    new GenericItem("Magical Monkey Conjured Poo", 6, 30),
+  ];
+  const testGildedRose = new Shop(testItems);
+  const updatedTestItems = testGildedRose.updateQualityOfAllShopItems();
+
+  it("Test type #1 - Quality decreases by 1 every day before deadline", function() {
+    expect(updatedTestItems[0].quality).toEqual(19);
+    expect(updatedTestItems[2].quality).toEqual(6);
+  });
+
+  it("Test type #2 - Quality decreases by 2 every day once beyond deadline", function() {
+    expect(updatedTestItems[0].quality).toEqual(19);
+    expect(updatedTestItems[2].quality).toEqual(6);
   });
 
 });
